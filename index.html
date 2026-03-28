@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Manual de Usuario | Control App - PAM Argentina</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
+    />
+
+    <style>
+      :root {
+        /* Paleta Industrial/Tecnológica PAM */
+        --theme-color: #0d6efd; /* Azul interactivo */
+        --sidebar-bg: #1e293b; /* Slate dark para el sidebar */
+        --sidebar-color: #cbd5e1; /* Texto gris claro sidebar */
+        --sidebar-nav-link-color: #cbd5e1;
+        --sidebar-nav-link-color--active: #ffffff;
+        --sidebar-name-color: #ffffff;
+        --base-color: #334155; /* Color texto principal */
+      }
+
+      /* Modificaciones al Sidebar */
+      .sidebar {
+        background-color: var(--sidebar-bg);
+        color: var(--sidebar-color);
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .sidebar h1 {
+        color: var(--sidebar-name-color);
+        font-weight: 600;
+      }
+      .sidebar ul li a {
+        color: var(--sidebar-nav-link-color);
+        font-size: 15px;
+        transition: all 0.2s;
+      }
+      .sidebar ul li a:hover {
+        color: #ffffff;
+        text-decoration: none;
+      }
+      .sidebar ul li.active > a {
+        color: var(--theme-color);
+        font-weight: 600;
+        background-color: rgba(13, 110, 253, 0.1);
+        border-right: 3px solid var(--theme-color);
+      }
+
+      /* Área de Contenido */
+      .markdown-section {
+        max-width: 850px;
+        padding: 2rem 15px;
+      }
+      .markdown-section h1,
+      .markdown-section h2 {
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 0.3em;
+      }
+
+      /* Imágenes y GIFs responsivos y estilizados */
+      .markdown-section img {
+        border-radius: 6px;
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        margin: 1.5rem 0;
+        max-width: 100%;
+        border: 1px solid #e2e8f0;
+      }
+
+      /* Tablas estilo WinForms/Datagrid */
+      .markdown-section table {
+        width: 100%;
+        display: table;
+        border-collapse: collapse;
+      }
+      .markdown-section table th {
+        background-color: #f1f5f9;
+        color: #475569;
+      }
+      .markdown-section table td,
+      .markdown-section table th {
+        border: 1px solid #cbd5e1;
+        padding: 12px;
+      }
+
+      #github-version {
+        background: rgba(13, 110, 253, 0.1);
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-family: monospace; /* Estilo técnico tipo versión */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">Iniciando el manual de Control...</div>
+
+    <script>
+      window.$docsify = {
+        name: "<b>Control</b> App",
+        repo: "", // Agrega el link a tu repo de GitHub aquí
+        loadSidebar: true, // Carga desde _sidebar.md
+        subMaxLevel: 2, // Nivel de profundidad del menú
+        auto2top: true, // Vuelve arriba al cambiar de pestaña
+
+        "flexible-alerts": {
+          style: "flat", // Puede ser 'flat' o 'callout'
+        },
+
+        // Configuración del Buscador
+        search: {
+          maxAge: 86400000,
+          paths: "auto",
+          placeholder: "🔍 Buscar en el manual...",
+          noData: "No se encontraron resultados!",
+          depth: 6,
+          hideOtherSidebarContent: false,
+        },
+
+        // Paginación inferior
+        pagination: {
+          previousText: "Anterior",
+          nextText: "Siguiente",
+          crossChapter: true,
+          crossChapterText: true,
+        },
+
+        plugins: [
+          function (hook, vm) {
+            hook.doneEach(async function () {
+              const releaseData = await fetchGitHubRelease();
+
+              // Inyectar Versión
+              const versionElement = document.getElementById("github-version");
+              if (versionElement) {
+                versionElement.innerText = releaseData.tag;
+              }
+
+              // Inyectar Fecha
+              const dateElement = document.getElementById("github-date");
+              if (dateElement) {
+                dateElement.innerText = releaseData.date;
+              }
+            });
+          },
+        ],
+      };
+    </script>
+
+    <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+    <script src="https://unpkg.com/docsify-plugin-flexible-alerts"></script>
+    <script>
+      // 1. Función para obtener la versión desde la API de GitHub
+      async function fetchGitHubRelease() {
+        const repo = "Control-PAM-Software/Control-PAM-Dist";
+        try {
+          const response = await fetch(
+            `https://api.github.com/repos/${repo}/releases/latest`,
+          );
+          const data = await response.json();
+
+          // Formatear la fecha
+          const dateOptions = {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          };
+          const date = new Date(data.published_at).toLocaleDateString(
+            "es-AR",
+            dateOptions,
+          );
+
+          return {
+            tag: data.tag_name,
+            date: date,
+          };
+        } catch (e) {
+          return { tag: "v5.4.2", date: "Marzo 2026" }; // Fallback
+        }
+      }
+    </script>
+  </body>
+</html>
