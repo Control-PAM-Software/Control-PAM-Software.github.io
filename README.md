@@ -1,6 +1,6 @@
 # Control — Sistema de Gestión de Inventario
 
-Manual de usuario del sistema **Control** desarrollado por **PAM Argentina**.  
+Manual de usuario del sistema **Control** desarrollado para **PAM Argentina**.  
 Este sistema permite gestionar el ingreso de mercadería, comparar contra anexos, exportar a Open Orange y realizar inventarios físicos.
 
 ---
