@@ -96,6 +96,182 @@
         border-radius: 4px;
         font-family: monospace; /* Estilo técnico tipo versión */
       }
+
+      /* ===== Página "Acerca De": componentes modernos ===== */
+      .ad-hero {
+        background: linear-gradient(
+          135deg,
+          var(--sidebar-bg) 0%,
+          var(--theme-color) 140%
+        );
+        border-radius: 12px;
+        color: #ffffff;
+        padding: 1.75rem 2rem;
+        margin: 0.5rem 0 2rem;
+        box-shadow: 0 10px 20px -8px rgba(13, 110, 253, 0.35);
+      }
+      .ad-hero p {
+        color: #e2e8f0;
+        font-size: 16px;
+        margin: 0 0 1rem;
+      }
+      .ad-hero strong {
+        color: #ffffff; /* Contraste sobre el gradiente */
+      }
+      .ad-hero a {
+        color: #93c5fd;
+        font-weight: 600;
+      }
+      .ad-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .ad-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: #ffffff;
+        border-radius: 999px;
+        padding: 4px 14px;
+        font-size: 13px;
+        font-weight: 600;
+        font-family: monospace;
+      }
+
+      .ad-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 1rem;
+        margin: 1.25rem 0;
+      }
+      .ad-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 1rem 1.15rem;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+      .ad-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 16px -6px rgba(30, 41, 59, 0.18);
+      }
+      .ad-card .ad-icon {
+        font-size: 1.45rem;
+      }
+      .ad-card .ad-label {
+        display: block;
+        margin-top: 0.4rem;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: #64748b;
+      }
+      .ad-card .ad-value {
+        display: block;
+        margin-top: 2px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #0f172a;
+      }
+
+      .ad-roadmap {
+        border-left: 4px solid var(--theme-color);
+        background: linear-gradient(
+          90deg,
+          rgba(13, 110, 253, 0.08),
+          rgba(13, 110, 253, 0) 70%
+        );
+        border-radius: 0 10px 10px 0;
+        padding: 1.1rem 1.4rem;
+        margin: 1.25rem 0;
+      }
+      .ad-pill {
+        display: inline-block;
+        background: rgba(13, 110, 253, 0.12);
+        color: var(--theme-color);
+        border-radius: 999px;
+        padding: 3px 12px;
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+      }
+      .ad-roadmap .ad-title {
+        display: block;
+        margin-top: 0.5rem;
+        font-weight: 700;
+        color: #0f172a;
+      }
+      .ad-roadmap .ad-desc {
+        margin: 0.35rem 0 0;
+        color: #334155;
+      }
+
+      .ad-support {
+        background: #f8fafc;
+        border: 1px dashed #cbd5e1;
+        border-radius: 10px;
+        padding: 1.25rem 1.5rem;
+        margin: 1.25rem 0;
+      }
+
+      /* Chip de versión en el Sidebar */
+      .ad-chip-sidebar {
+        display: inline-flex;
+        margin: 0.25rem 0 1rem;
+        background: rgba(13, 110, 253, 0.18);
+        border-color: rgba(13, 110, 253, 0.45);
+        font-size: 12px;
+      }
+
+      /* Listas numeradas estilo "pasos" (global) */
+      .markdown-section ol {
+        padding-left: 0;
+        list-style: none;
+        counter-reset: md-step;
+        margin: 1.25rem 0;
+      }
+      .markdown-section ol > li {
+        position: relative;
+        padding-left: 2.5rem;
+        margin-bottom: 0.7rem;
+        counter-increment: md-step;
+      }
+      .markdown-section ol > li::before {
+        content: counter(md-step);
+        position: absolute;
+        left: 0;
+        top: -1px;
+        width: 1.75rem;
+        height: 1.75rem;
+        background: rgba(13, 110, 253, 0.12);
+        color: var(--theme-color);
+        font-weight: 800;
+        font-size: 0.85rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Separadores con degradado */
+      .markdown-section hr {
+        border: none;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          var(--theme-color),
+          #e2e8f0 60%,
+          transparent
+        );
+        opacity: 0.35;
+      }
     </style>
   </head>
   <body>
@@ -146,6 +322,21 @@
               const dateElement = document.getElementById("github-date");
               if (dateElement) {
                 dateElement.innerText = releaseData.date;
+              }
+
+              // Inyectar chip de versión en el Sidebar
+              let sidebarChip = document.getElementById("sidebar-version");
+              if (!sidebarChip) {
+                const nav = document.querySelector(".sidebar-nav");
+                if (nav) {
+                  sidebarChip = document.createElement("span");
+                  sidebarChip.id = "sidebar-version";
+                  sidebarChip.className = "ad-chip ad-chip-sidebar";
+                  nav.prepend(sidebarChip);
+                }
+              }
+              if (sidebarChip) {
+                sidebarChip.innerText = "🏷️ " + releaseData.tag;
               }
             });
           },

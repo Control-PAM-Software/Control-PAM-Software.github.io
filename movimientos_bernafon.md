@@ -1,6 +1,13 @@
 # Movimientos Bernafon
 
-Este módulo es **exclusivo de la línea Bernafon** y se accede desde **Movimiento → Bernafon** en la barra de menú.
+<div class="ad-hero">
+  <p>Este módulo es <strong>exclusivo de la línea Bernafon</strong> y se accede desde <strong>Movimiento → Bernafon</strong> en la barra de menú.</p>
+  <div class="ad-chips">
+    <span class="ad-chip">🔄 Exclusivo Bernafon</span>
+    <span class="ad-chip">🗂️ 1 tab (Anexo)</span>
+    <span class="ad-chip">🧩 Desglose automático</span>
+  </div>
+</div>
 
 A diferencia del módulo de Ingresos, la ventana de Movimientos tiene **una sola tab** (Anexo) y está diseñada para gestionar el desglose de artículos compuestos (audífonos + cargadores).
 

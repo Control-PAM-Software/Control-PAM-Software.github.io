@@ -1,11 +1,20 @@
 # Configuración
 
-Accedé desde la barra de menú superior: **Menú → Configuración**.
+<div class="ad-hero">
+  <p>Accedé desde la barra de menú superior: <strong>Menú → Configuración</strong>.</p>
+  <div class="ad-chips">
+    <span class="ad-chip">⚙️ Menú → Configuración</span>
+    <span class="ad-chip">🧩 Sistema · Etiquetas · Líneas</span>
+  </div>
+</div>
 
 La ventana de configuración tiene un **submenú lateral izquierdo** con dos tipos de entradas:
 
-- **Sistema** — configuraciones generales que aplican a todos los módulos.
-- **Líneas** (AB, Atos, Bernafon, Inomed, Oticom) — configuraciones específicas por proveedor.
+<div class="ad-grid">
+  <div class="ad-card"><span class="ad-icon">⚙️</span><span class="ad-label">Sistema</span><span class="ad-value">Configuraciones generales que aplican a todos los módulos</span></div>
+  <div class="ad-card"><span class="ad-icon">🏷️</span><span class="ad-label">Etiquetas</span><span class="ad-value">Excel de etiquetas del ingreso (común a todas las líneas)</span></div>
+  <div class="ad-card"><span class="ad-icon">🏭</span><span class="ad-label">Líneas</span><span class="ad-value">AB, Atos, Bernafon, Inomed y Oticom — específicas por proveedor</span></div>
+</div>
 
 <!-- PLACEHOLDER: Captura de la ventana de Configuración del Sistema -->
 
@@ -53,6 +62,45 @@ Cada fila tiene el nombre interno del sistema y el nombre de columna destino edi
 
 > [!INFO]
 > El campo **Kit** sólo es relevante para valijas de AB. Si está habilitado, aparecerá el textBox de **Serie Procesador** en la tab Valija durante el Ingreso. Ver [Tab Valija en Ingresos](ingresos#tab-valija).
+
+Hacé clic en **Guardar Cambios** (ícono de disquete) para confirmar.
+
+---
+
+## Etiquetas
+
+En el submenú **Etiquetas** se configura el Excel que genera el botón [Exportar Etiquetas](ingresos#exportar-etiquetas) durante el Ingreso de Mercadería. La configuración es común a todas las líneas.
+
+<!-- PLACEHOLDER: Captura de Configuraciones Etiquetas -->
+
+### Columnas del Excel
+
+Igual que en Open Orange, cada columna tiene un nombre editable y un checkbox de inclusión:
+
+| Columna  | Nombre por defecto | Incluir |
+| -------- | ------------------ | ------- |
+| Código   | Código             | ✅      |
+| Serie    | Serie              | ✅      |
+| Cantidad | Cantidad           | ✅      |
+| Despacho | Despacho           | ✅      |
+
+> [!WARNING]
+> Dejá activo **al menos una** columna: si todas están excluidas, la exportación falla con un mensaje de error.
+
+### Carpeta y nombre del archivo
+
+| Campo                      | Uso                                                                        |
+| -------------------------- | -------------------------------------------------------------------------- |
+| **Carpeta de exportación** | Destino fijo del archivo. El botón **Examinar...** abre el selector de carpetas |
+| **Nombre del archivo**     | Nombre con el que se guarda el `.xlsx`, tal cual se escriba                |
+
+El comportamiento depende de si hay carpeta configurada:
+
+- **Con carpeta**: el sistema guarda directo en esa ruta, sin preguntar nada.
+- **Sin carpeta**: en cada exportación se abre el diálogo de guardado, con el nombre precargado como sugerencia.
+
+> [!WARNING]
+> El nombre se usa **exactamente como se escribe** (más la extensión `.xlsx`) porque ese archivo es consumido por otro sistema. No le agregues línea, fecha ni despacho. Los caracteres inválidos (`\ / : * ? " < > |`) se remueven automáticamente.
 
 Hacé clic en **Guardar Cambios** (ícono de disquete) para confirmar.
 

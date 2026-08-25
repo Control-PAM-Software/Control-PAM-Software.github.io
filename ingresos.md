@@ -1,14 +1,21 @@
 # Ingreso de Mercadería
 
-El módulo de **Ingresos** se accede desde la barra de menú superior: **Ingreso → [Línea]**.
+<div class="ad-hero">
+  <p>El módulo de <strong>Ingresos</strong> se accede desde la barra de menú superior: <strong>Ingreso → [Línea]</strong>.</p>
+  <div class="ad-chips">
+    <span class="ad-chip">📥 Módulo de Ingresos</span>
+    <span class="ad-chip">🏭 AB · Atos · Bernafon · Inomed · Oticom</span>
+    <span class="ad-chip">🗂️ 3 tabs</span>
+  </div>
+</div>
 
 Si bien todas las ventanas de ingreso tienen el mismo formato base, pueden presentar pequeñas diferencias según la línea seleccionada. Todas comparten **tres tabs** en la parte inferior:
 
-| Tab           | Función                                                           |
-| ------------- | ----------------------------------------------------------------- |
-| **Anexo**     | Muestra la tabla del anexo (mercadería esperada según el remito). |
-| **Resultado** | Genera la tabla final para exportar a Open Orange.                |
-| **Valija**    | Donde se cargan los artículos físicos recibidos.                  |
+<div class="ad-grid">
+  <div class="ad-card"><span class="ad-icon">📋</span><span class="ad-label">Anexo</span><span class="ad-value">Tabla del anexo (mercadería esperada según el remito)</span></div>
+  <div class="ad-card"><span class="ad-icon">📤</span><span class="ad-label">Resultado</span><span class="ad-value">Genera la tabla final para exportar a Open Orange</span></div>
+  <div class="ad-card"><span class="ad-icon">🧳</span><span class="ad-label">Valija</span><span class="ad-value">Carga de los artículos físicos recibidos</span></div>
+</div>
 
 <!-- PLACEHOLDER: GIF del flujo completo de ingreso -->
 
@@ -52,9 +59,16 @@ Luego de comparar, hacé clic en **Open Orange** para generar la tabla de export
 
 Borra toda la información cargada en esta tab. No afecta a las otras tabs.
 
+### Despacho
+
+Campo ubicado en la parte superior derecha de esta tab. Cargá acá el número de despacho del ingreso: es **obligatorio** para poder usar [Exportar Etiquetas](#exportar-etiquetas) y viaja como columna en ese Excel.
+
+> [!INFO]
+> El valor aplica a toda la sesión: todas las filas del Excel de etiquetas salen con este número.
+
 ### Serie Procesador _(solo AB con Kit habilitado)_
 
-Si en **Configuración → Ingreso Open Orange** la opción **Kit** está activa, aparece un campo en la parte superior derecha para ingresar el número de serie del procesador de la valija. Este valor se incluye en la exportación a Open Orange.
+Si en **Configuración → Ingreso Open Orange** la opción **Kit** está activa, aparece un campo debajo de **Despacho** (parte superior derecha) para ingresar el número de serie del procesador de la valija. Este valor se incluye en la exportación a Open Orange.
 
 ---
 
@@ -111,6 +125,39 @@ Agrega automáticamente un artículo de pila con datos predefinidos:
 - **Imprimir** — imprime el contenido de la Valija.
 - **Excel** — exporta como `.xlsx`.
 - **Generar QR** — genera un código QR con toda la información de la valija para pickeo posterior. Ver [Generación de QR](#generacion-de-qr).
+
+---
+
+## Exportar Etiquetas
+
+El botón **Exportar Etiquetas** está en el submenú lateral de la [Tab Anexo](#tab-anexo) y genera un Excel con las etiquetas del ingreso.
+
+<!-- PLACEHOLDER: Captura del botón Exportar Etiquetas / Excel generado -->
+
+A diferencia de las otras exportaciones, **no exporta una tabla de la pantalla**: acumula durante toda la sesión todo lo que fue pickeando en la [Tab Valija](#tab-valija) (incluyendo [Artículo Manual](#articulo-manual) y Tiene Pila) y lo vuelca al final.
+
+| Columna  | Contenido                                          |
+| -------- | -------------------------------------------------- |
+| Código   | Código del artículo                                |
+| Serie    | Número de serie                                    |
+| Cantidad | Unidades recibidas (agrupadas por código y serie)  |
+| Despacho | Número de despacho cargado en el campo **Despacho** |
+
+Los nombres de columna y su inclusión se configuran en [Configuración → Etiquetas](configuracion#etiquetas).
+
+### Flujo de exportación
+
+1. Cargá el número de despacho en el campo **Despacho** de la Tab Anexo.
+2. Piqueá la valija normalmente.
+3. Hacé clic en **Exportar Etiquetas**. El sistema muestra el spinner **"Exportando etiquetas..."** mientras genera el archivo en segundo plano.
+4. Si tenés **Carpeta de exportación** configurada, el archivo se guarda directo ahí. Si no, se abre el diálogo para elegir dónde guardarlo.
+5. Al terminar, el sistema pregunta si querés abrir el archivo.
+
+> [!WARNING]
+> Si hay carpeta configurada, el archivo siempre se guarda con el nombre definido en **Nombre del archivo** — cada exportación **reemplaza al anterior**, ya que ese archivo es consumido por otro sistema.
+
+> [!TIP]
+> La exportación se bloquea con un aviso si falta cargar el **Despacho** o si no pickeaste ningún artículo. Los botones **Limpiar** de las tabs reinician también el acumulador de etiquetas.
 
 ---
 

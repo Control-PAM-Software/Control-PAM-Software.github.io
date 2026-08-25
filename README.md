@@ -1,7 +1,13 @@
 # Control — Sistema de Gestión de Inventario
 
-Manual de usuario del sistema **Control** desarrollado para **PAM Argentina**.  
-Este sistema permite gestionar el ingreso de mercadería, comparar contra anexos, exportar a Open Orange y realizar inventarios físicos.
+<div class="ad-hero">
+  <p>Manual de usuario del sistema <strong>Control</strong> desarrollado para <strong>PAM Argentina</strong>: ingreso de mercadería, comparación contra anexos, exportación a Open Orange e inventarios físicos.</p>
+  <div class="ad-chips">
+    <span class="ad-chip">📦 3 módulos</span>
+    <span class="ad-chip">🏭 5 líneas</span>
+    <span class="ad-chip">💻 .NET 8.0 · WinForms</span>
+  </div>
+</div>
 
 ---
 
@@ -9,11 +15,11 @@ Este sistema permite gestionar el ingreso de mercadería, comparar contra anexos
 
 Control es una aplicación de escritorio (.NET 8.0 / WinForms) que centraliza tres flujos operativos clave:
 
-| Módulo                   | Descripción                                                         | Líneas compatibles                 |
-| ------------------------ | ------------------------------------------------------------------- | ---------------------------------- |
-| **Ingresos**             | Carga y comparación de mercadería recibida contra el anexo esperado | AB, Atos, Bernafon, Inomed, Oticom |
-| **Inventario**           | Conteo físico de stock con descuento en tiempo real                 | AB, Atos, Bernafon, Inomed, Oticom |
-| **Movimientos Bernafon** | Desglose de artículos de stock específico de Bernafon               | Bernafon                           |
+<div class="ad-grid">
+  <div class="ad-card"><span class="ad-icon">📥</span><span class="ad-label">Ingresos</span><span class="ad-value">Carga y comparación de mercadería recibida contra el anexo esperado</span></div>
+  <div class="ad-card"><span class="ad-icon">📦</span><span class="ad-label">Inventario</span><span class="ad-value">Conteo físico de stock con descuento en tiempo real</span></div>
+  <div class="ad-card"><span class="ad-icon">🔄</span><span class="ad-label">Movimientos Bernafon</span><span class="ad-value">Desglose de artículos de stock específico de Bernafon</span></div>
+</div>
 
 ---
 
@@ -32,6 +38,7 @@ El flujo típico de un **Ingreso de Mercadería** sigue estos pasos:
 2. **Pickear la Valija** — Leer los artículos físicos con lectora de código de barras/QR.
 3. **Comparar** — El sistema detecta diferencias y faltantes automáticamente.
 4. **Exportar a Open Orange** — Generar la tabla final y copiarla al portapapeles.
+5. **Exportar Etiquetas** — Generar el Excel de etiquetas del despacho. Ver [Exportar Etiquetas](ingresos#exportar-etiquetas).
 
 ---
 
