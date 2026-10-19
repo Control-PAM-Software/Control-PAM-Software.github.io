@@ -3,7 +3,7 @@
 <div class="ad-hero">
   <p>Manual de usuario del sistema <strong>Control</strong> desarrollado para <strong>PAM Argentina</strong>: ingreso de mercadería, comparación contra anexos, exportación a Open Orange e inventarios físicos.</p>
   <div class="ad-chips">
-    <span class="ad-chip">📦 3 módulos</span>
+    <span class="ad-chip">📦 4 módulos</span>
     <span class="ad-chip">🏭 5 líneas</span>
     <span class="ad-chip">💻 .NET 8.0 · WinForms</span>
   </div>
@@ -13,12 +13,13 @@
 
 ## ¿Qué hace Control?
 
-Control es una aplicación de escritorio (.NET 8.0 / WinForms) que centraliza tres flujos operativos clave:
+Control es una aplicación de escritorio (.NET 8.0 / WinForms) que centraliza cuatro flujos operativos clave:
 
 <div class="ad-grid">
   <div class="ad-card"><span class="ad-icon">📥</span><span class="ad-label">Ingresos</span><span class="ad-value">Carga y comparación de mercadería recibida contra el anexo esperado</span></div>
   <div class="ad-card"><span class="ad-icon">📦</span><span class="ad-label">Inventario</span><span class="ad-value">Conteo físico de stock con descuento en tiempo real</span></div>
   <div class="ad-card"><span class="ad-icon">🔄</span><span class="ad-label">Movimientos Bernafon</span><span class="ad-value">Desglose de artículos de stock específico de Bernafon</span></div>
+  <div class="ad-card"><span class="ad-icon">📊</span><span class="ad-label">Reporte Bernafon</span><span class="ad-value">Control de mercadería en consignación desde el depósito central</span></div>
 </div>
 
 ---

@@ -153,3 +153,34 @@ Podés **exportar e importar** la lista de códigos con los botones **Exportar D
 
 > [!TIP]
 > Si recibís un movimiento con un código que no está en esta lista, podés desglosarlo manualmente con doble clic. Ver [Movimientos Bernafon](movimientos-bernafon#desglosar-un-articulo).
+
+---
+
+## Reportes
+
+En el submenú **Reportes** se configura el [Reporte Bernafon](reporte_bernafon): los nombres de las columnas de los archivos de entrada y el plazo límite.
+
+<!-- PLACEHOLDER: Captura de Configuraciones Reportes -->
+
+![Configuración Reportes](_media/Configuracion/Configuracion_Reportes.png)
+
+### Nombres de columnas
+
+Cada archivo de entrada tiene sus propios nombres de columna:
+
+| Excel de entrada             | Campos a configurar                                              |
+| ---------------------------- | --------------------------------------------------------------- |
+| **Listado de Movimientos**   | Artículo, Núm. Serie, Fecha, Desde Depósito, Hasta Depósito      |
+| **Listado de Stock Actual**  | Artículo, Núm. Serie, Depósito de Stock, Cantidad / Stock        |
+
+> [!WARNING]
+> Estos nombres deben coincidir **exactamente** con los encabezados de los archivos. Si no coinciden, el reporte no se puede generar.
+
+### Plazo límite
+
+El campo **Plazo Límite (días)** (por defecto `30`) define el máximo de días que una serie puede estar en consignación:
+
+- **Dentro del plazo** → la serie figura como **Consignación en Plazo**.
+- **Supera el plazo** → la serie figura como **Consignación Vencida**.
+
+Hacé clic en **Guardar Cambios** (ícono de disquete) para confirmar.

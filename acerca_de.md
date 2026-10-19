@@ -16,7 +16,7 @@
 <div class="ad-grid">
   <div class="ad-card"><span class="ad-icon">🖥️</span><span class="ad-label">Entorno</span><span class="ad-value">.NET 8.0 (WinForms)</span></div>
   <div class="ad-card"><span class="ad-icon">👨‍💻</span><span class="ad-label">Desarrollador</span><span class="ad-value">Technical Advisor / PAM Argentina</span></div>
-  <div class="ad-card"><span class="ad-icon">📦</span><span class="ad-label">Módulos</span><span class="ad-value">Ingresos · Inventario · Movimientos</span></div>
+  <div class="ad-card"><span class="ad-icon">📦</span><span class="ad-label">Módulos</span><span class="ad-value">Ingresos · Inventario · Movimientos · Reportes</span></div>
   <div class="ad-card"><span class="ad-icon">🏭</span><span class="ad-label">Líneas</span><span class="ad-value">AB · Atos · Bernafon · Inomed · Oticom</span></div>
 </div>
 

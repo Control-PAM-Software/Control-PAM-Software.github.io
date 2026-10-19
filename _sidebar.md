@@ -12,5 +12,8 @@
 - **🔄 Movimientos Especiales**
   - [Movimientos Bernafon](movimientos_bernafon.md)
 
+- **📊 Reportes**
+  - [Reporte Bernafon](reporte_bernafon.md)
+
 - **📌 Acerca De**
   - [Acerca de la App](acerca_de.md)
